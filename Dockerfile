@@ -7,7 +7,7 @@ RUN \
   apt-get -y upgrade
 
 RUN \
-  apt-get -y --no-install-recommends install git g++ wget curl zip vim pkg-config tar cmake unzip ca-certificates
+  apt-get -y --no-install-recommends install git g++ wget curl zip vim pkg-config tar make cmake unzip ca-certificates
 
 RUN git clone https://github.com/microsoft/vcpkg
 WORKDIR vcpkg
