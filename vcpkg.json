@@ -1,7 +1,14 @@
 {
   "dependencies": [
     "jsoncpp",
-    "sqlite3",
+    {
+      "$explanation": [
+        "This is how you tell vcpkg enable features of this package"
+      ],
+      "name": "sqlite3",
+      "default-features": true,
+      "features": [ "fts5", "json1" ]
+    },
     "cxxopts",
     "fmt",
     "range-v3"
