@@ -1,0 +1,10 @@
+{
+  "dependencies": [
+    "jsoncpp",
+    "sqlite3",
+    "cxxopts",
+    "fmt",
+    "range-v3"
+  ],
+  "builtin-baseline": "1e68748a7c6914642ed686b2e19c3d688bca150a"
+}

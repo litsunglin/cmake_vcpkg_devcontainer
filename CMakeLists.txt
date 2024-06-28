@@ -1,24 +1,17 @@
-# CMakeLists.txt
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.15)
 
-project(test CXX)
+project(fibonacci CXX)
 
-# Download automatically, you can also just copy the conan.cmake file
-if(NOT EXISTS "${CMAKE_BINARY_DIR}/conan.cmake")
-   message(STATUS "Downloading conan.cmake from https://github.com/conan-io/cmake-conan")
-   file(DOWNLOAD "https://github.com/conan-io/cmake-conan/raw/v0.15/conan.cmake"
-                 "${CMAKE_BINARY_DIR}/conan.cmake")
-endif()
+find_package(fmt CONFIG REQUIRED)
+find_package(range-v3 CONFIG REQUIRED)
+find_package(cxxopts CONFIG REQUIRED)
 
-include(${CMAKE_BINARY_DIR}/conan.cmake)
+set(CMAKE_CXX_STANDARD 17)
 
-conan_cmake_run(REQUIRES fmt/6.2.1
-                BASIC_SETUP CMAKE_TARGETS
-                BUILD missing)
+add_executable(fibo main.cxx)
 
-# find package from VCPKG
-find_package(sqlite3 CONFIG REQUIRED)
-
-add_executable(main main.cpp)
-target_link_libraries(main
-    PRIVATE CONAN_PKG::fmt sqlite3)
+target_link_libraries(fibo
+  PRIVATE
+    fmt::fmt
+    range-v3::meta range-v3::concepts range-v3::range-v3 
+    cxxopts::cxxopts)
